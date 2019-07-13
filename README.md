@@ -61,3 +61,34 @@ website. Unfortunately, it is not possible to tell if a printer is compatible
 with the ESC POS library so some changes may be necessary. Different printers
 implement different subsets of the ESC POS commands.
 
+## Convert picture to include file
+
+mkpic.sh converts any image file supported by ImageMagick convert to a C
+include file. The image is resized to fit on a 384 dot wide printer. Colors are
+converted to dithered black and white dots. To preview the result, view output
+file bitmap.png. The other output file is the image name with ".h" appended.
+
+$ ./mkpic.sh wave.png
+
+bitmap.png is a black and white version of the wave.png file.
+
+wave.png.h is a C include file with the black and white image processed
+for printing using the ESC * command. The Python program bitmapband.py
+converts bitmap.png to a C include file transposing rows and columns as
+needed.
+
+Example output
+
+```
+#define bitmap_width   384
+#define bitmap_height  258
+#define bitmap_density 2
+
+const uint8_t bitmap_data[] PROGMEM = {
+0, 0, 0, 72, 16, 36, 2, 66, 0, 16, 0, 72, 65, ...
+...
+};
+```
+
+If the result is too light or dark, use a paint program such as PhotoShop or
+GIMP to adjust the image before running mkpic.sh.

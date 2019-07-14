@@ -92,3 +92,10 @@ const uint8_t bitmap_data[] PROGMEM = {
 
 If the result is too light or dark, use a paint program such as PhotoShop or
 GIMP to adjust the image before running mkpic.sh.
+
+## Arduino upload failure
+
+I found installing a 1 uF capacitor between GND and RST helps a lot. See
+the link for more discussion.
+
+http://community.m5stack.com/topic/55/simple-fix-when-upload-fails

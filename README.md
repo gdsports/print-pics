@@ -99,3 +99,11 @@ I found installing a 1 uF capacitor between GND and RST helps a lot. See
 the link for more discussion.
 
 http://community.m5stack.com/topic/55/simple-fix-when-upload-fails
+
+## Battery Power On Failure
+
+When running on battery, the M5Stack does not turn on when the USB host module
+is installed. The M5Stack works fine running on battery but once it is turned
+off, it can only be turned on by plugging in power via the USB jack.
+
+The M5Stack power on works correctly when the USB host module is removed.
